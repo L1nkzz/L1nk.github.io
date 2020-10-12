@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>博客？</title>
-    <updated>2020-10-12T13:02:38.147Z</updated>
+    <updated>2020-10-12T13:04:23.193Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
@@ -11,12 +11,12 @@
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 博客？</rights>
     <entry>
-        <title type="html"><![CDATA[test]]></title>
-        <id>https://L1nkzz.github.io/post/test/</id>
-        <link href="https://L1nkzz.github.io/post/test/">
+        <title type="html"><![CDATA[HELLO WORLD]]></title>
+        <id>https://L1nkzz.github.io/post/hello-world/</id>
+        <link href="https://L1nkzz.github.io/post/hello-world/">
         </link>
-        <updated>2020-10-12T12:32:16.000Z</updated>
-        <content type="html"><![CDATA[<p>#Can you see it?</p>
+        <updated>2020-10-12T13:03:51.000Z</updated>
+        <content type="html"><![CDATA[<p>WWWWWWWWWWWWWWWWW</p>
 ]]></content>
     </entry>
 </feed>
