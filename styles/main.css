@@ -1148,17 +1148,17 @@ h3.serchedPreview {
 }
 
 			body {
-				background-color: #ffffff !important;
+				background-color: #f8f9fa !important;
 				color: #4a4a4a !important;
 			}
 
 			#mainNav.is-fixed {
-				background-color: RGBA(255,255,255,0.9);
+				background-color: RGBA(248,249,250,0.9);
 				border-bottom: 1px solid #ffffff;
 			}
 
 			.fixed-top {
-				background-color: #ffffff;
+				background-color: #f8f9fa;
 			}
 			.fixed-top .navbar-brand,
 			.fixed-top .navbar-nav > li.nav-item > a,
@@ -1170,16 +1170,16 @@ h3.serchedPreview {
 			}
 
 			a {
-				color: RGBA(0,133,161,0.7) ;
+				color: RGBA(66,99,235,0.7) ;
 			}
 
 			a:focus,
 			a:hover {
-				color: #0085a1 ;
+				color: #4263eb ;
 			}
 
             .row .post-row-container {
-				background-color: #f3f3f3a8 !important;
+				background-color: #f8f9fa !important;
 			}
 
 			.title-floor .post-title-container a,
@@ -1196,26 +1196,26 @@ h3.serchedPreview {
 			}
 
 			blockquote {
-				border-left: 2px solid #0085a1;
-				color: #0085a1 !important;
+				border-left: 2px solid #4263eb;
+				color: #4263eb !important;
 			}
 
 			.post-preview > .post-meta {
-				color: #868e96 !important;
+				color: #adb5bd !important;
 			}
 
 			.title-floor .post-title-container a:hover,
 			#mainNav.is-fixed .navbar-brand:hover,
 			#mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
-				color: #0085a1 !important;
+				color: #4263eb !important;
 			}
 
 			.title-floor .post-title-container a:hover::after{
-				background-color: #0085a1 !important;
+				background-color: #4263eb !important;
 			}
 
 			::selection{
-				background: #0085a1 !important;
+				background: #4263eb !important;
 			}
 
 			.post-row-sec-floor .post-tag {
@@ -1224,8 +1224,8 @@ h3.serchedPreview {
 			}
 
 			.post-row-sec-floor .post-tag:hover {
-				color: #0085a1 !important;
-				border-color: #0085a1 !important;
+				color: #4263eb !important;
+				border-color: #4263eb !important;
 			}
 
 			.page {
@@ -1262,7 +1262,7 @@ h3.serchedPreview {
 
 			.toc-container .markdownIt-TOC {
 				border: 1px solid RGBA(74,74,74,0.3);
-				background-color: #ffffff;
+				background-color: #f8f9fa;
 			}
 
 			.toc-container .markdownIt-TOC li a {
@@ -1270,7 +1270,7 @@ h3.serchedPreview {
 			}
 
 			.currentToc {
-				color: #0085a1 !important;
+				color: #4263eb !important;
 				background-color: RGBA(74,74,74,0.1);
 			}
 

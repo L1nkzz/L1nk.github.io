@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>博客？</title>
-    <updated>2020-10-12T13:30:24.488Z</updated>
+    <updated>2020-10-12T15:50:53.860Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
@@ -10,4 +10,131 @@
     <logo>https://L1nkzz.github.io/images/avatar.png</logo>
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 博客？</rights>
+    <entry>
+        <title type="html"><![CDATA[清 北 学 堂 国 庆 七 日 游]]></title>
+        <id>https://L1nkzz.github.io/post/qing-bei-xue-tang-guo-qing-qi-ri-you/</id>
+        <link href="https://L1nkzz.github.io/post/qing-bei-xue-tang-guo-qing-qi-ri-you/">
+        </link>
+        <updated>2020-10-12T15:28:11.000Z</updated>
+        <content type="html"><![CDATA[<p>ytez除了我都强的离谱</p>
+<p><s>我不是ytez的啊，那没事了</s></p>
+<p><s>不管题了，直接讲课件</s></p>
+<h2 id="搜-索-与-枚-举">搜 索 与 枚 举</h2>
+<p><s>课件中枚举里最难的就是水仙花数所以略过</s></p>
+<h3 id="搜索"><strong>搜索</strong></h3>
+<ul>
+<li>广度优先搜索（BFS<s>被反杀</s>）</li>
+<li>深度优先搜索（DFS<s>大法师</s>）</li>
+<li>记忆化搜索</li>
+<li>迭代加深搜索（IDFS<s>爱大法师</s>）</li>
+<li>A*</li>
+<li>IDA*</li>
+<li>meet in the middle</li>
+<li>爬山算法</li>
+<li>模拟退火</li>
+</ul>
+<h4 id="深度优先搜索"><strong>深度优先搜索</strong></h4>
+<blockquote>
+<p>例：想象你面前有一棵树<br>
+你现在在一号点，你想找到树中与一号点连通的每一个点<br>
+那么我们考虑按照深度优先的顺序去遍历这棵树，即，假设你当前在点x，如果和x连边的点中有一个点y，满足y比x深，即y是x的儿子，并且y还没有被访问过，那么我们就走到y，如果有多个y满足条件，我们走到其中任意一个<br>
+如果没有y满足条件，我们返回x的父亲<br>
+按照这个顺序，我们就可以访问到每个节点，并且每条边会恰好被走两次（从父亲到儿子一次，从儿子到父亲一次）</p>
+</blockquote>
+<p><strong>小 试 牛 刀</strong></p>
+<p>遍历一张图</p>
+<pre><code class="language-cpp">void dfs(int x){
+	int i;
+	vis[x]=1;
+	for(i=1;i&lt;=n;i++){
+		if(mp[x][i]&amp;&amp;!vis[i]){
+			dfs(i);
+		}
+	}
+}
+</code></pre>
+<p>枚举一个集合中的所有子集</p>
+<pre><code class="language-cpp">void dfs(int x){
+	if(x&gt;n){
+		//得到了一个子集 
+		return ;
+	}
+	s[++tot]=a[x];
+	dfs(x+1);//选第x位
+	tot--;
+	dfs(x+1);//不选
+}
+</code></pre>
+<p>如何用dfs判断一个图里有没有环？</p>
+<pre><code class="language-cpp">void dfs(int pos)
+{
+    vis[i] = true;
+    for(int i = 1; i &lt;= c[pos]; i++)
+    {
+        if(vis[next[pos][i]])
+        {
+            cout &lt;&lt; -1;
+            return;
+        }
+        dfs(next[pos][i]);
+    }
+}
+</code></pre>
+<p><a href="https://www.luogu.com.cn/problem/P1219">八皇后问题</a></p>
+<blockquote>
+<p>在一个n*n的棋盘上摆n个皇后，使他们两两不能互相攻击到，求方案数<br>
+N&lt;=10</p>
+</blockquote>
+<pre><code class="language-cpp">void dfs(int step)
+{
+	for(int i = 1; i &lt;= n; i++)
+	{
+		if(!trigs[i])
+		{
+			bool trig = true;
+			for(int j = 1; j &lt; step; j++)
+			{
+				{
+					if(hangs[j] + step - j == i || hangs[j] - step + j == i)
+					{
+						trig = false;
+						break;
+					}
+				}
+			}
+			if(trig)
+			{
+				hangs[step] = i;
+				if(step == n)
+				{
+					times++;
+					break;
+				}
+				else
+				{
+					trigs[i] = 1;
+					dfs(step + 1);
+					trigs[i] = 0;
+				}
+			}
+		}
+	}
+}
+</code></pre>
+<p><a href="https://www.luogu.com.cn/problem/P1731">NOI1999 生日蛋糕</a></p>
+<p>dfs需要传哪些状态？</p>
+<ul>
+<li>第i层</li>
+<li>高度</li>
+<li>半径</li>
+<li>表面积</li>
+<li>体积</li>
+</ul>
+<p><em>剪枝时间~</em></p>
+<ul>
+<li>可行性剪枝：剩余的材料太少或太多，不足以构造剩余层数的蛋糕，剪枝；</li>
+<li>最优化剪枝：如果当前已用表面积加上余下最小的侧面积大于已知最优解，剪枝；</li>
+</ul>
+]]></content>
+    </entry>
 </feed>
