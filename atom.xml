@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
-    <title>博客？</title>
-    <updated>2020-10-12T15:50:53.860Z</updated>
+    <title>L1nk的博客</title>
+    <updated>2020-10-13T11:42:14.935Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
-    <subtitle>？</subtitle>
     <logo>https://L1nkzz.github.io/images/avatar.png</logo>
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 博客？</rights>
+    <rights>All rights reserved 2020, L1nk的博客</rights>
     <entry>
         <title type="html"><![CDATA[清 北 学 堂 国 庆 七 日 游]]></title>
         <id>https://L1nkzz.github.io/post/qing-bei-xue-tang-guo-qing-qi-ri-you/</id>
@@ -134,7 +133,9 @@ N&lt;=10</p>
 <ul>
 <li>可行性剪枝：剩余的材料太少或太多，不足以构造剩余层数的蛋糕，剪枝；</li>
 <li>最优化剪枝：如果当前已用表面积加上余下最小的侧面积大于已知最优解，剪枝；</li>
+<li></li>
 </ul>
+<p>写暴力即可</p>
 ]]></content>
     </entry>
 </feed>
