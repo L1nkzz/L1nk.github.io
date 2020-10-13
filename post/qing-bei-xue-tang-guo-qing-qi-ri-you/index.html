@@ -78,7 +78,7 @@
         
         <li class="nav-item">
           <div class="gridea-search-container">
-            <form id="gridea-search-form" style="position: relative" data-update="1602592864077"
+            <form id="gridea-search-form" style="position: relative" data-update="1602605433305"
               action="/search/index.html">
               <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
               <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -128,7 +128,7 @@
         
         <li class="nav-item">
           <div class="gridea-search-container">
-            <form id="gridea-search-form" style="position: relative" data-update="1602592864077"
+            <form id="gridea-search-form" style="position: relative" data-update="1602605433305"
               action="/search/index.html">
               <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
               <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -157,7 +157,7 @@
               <h1>清 北 学 堂 国 庆 七 日 游</h1>
               <span class="meta">
                 Posted on
-                2020-10-12，3 min read
+                2020-10-12，7 min read
               </span>
             </div>
           
@@ -290,9 +290,85 @@ N&lt;=10</p>
 <ul>
 <li>可行性剪枝：剩余的材料太少或太多，不足以构造剩余层数的蛋糕，剪枝；</li>
 <li>最优化剪枝：如果当前已用表面积加上余下最小的侧面积大于已知最优解，剪枝；</li>
-<li></li>
 </ul>
-<p>写暴力即可</p>
+<h4 id="广度优先搜索"><strong>广度优先搜索</strong></h4>
+<blockquote>
+<p>例：还是想像一棵树<br>
+你现在还是在一号点，你还是想找到树中与一号点连通的每一个点<br>
+我们初始的时候把一号点推入队取出队尾，然后只要当前队列非空，我们就取出队头元素x，并将队头弹出<br>
+然后我们将x的所有儿子推入队列<br>
+对于图上的情况，我们将所有与x相连，并且还没入过队的点推入队列<br>
+这样我们就能够访问所有点</p>
+</blockquote>
+<pre><code class="language-cpp">void bfs(){
+	q[tl++]=s;
+	while(hd!=tl){
+		x=q[hd++];
+		for(i=1;i&lt;=n;i++){
+			if(mp[x][i]&amp;&amp;!vis[i]){
+				q[tl++]=i;
+				vis[i]=1;
+			}
+		}
+	}
+}
+</code></pre>
+<p><a href="https://www.luogu.com.cn/problem/P4289">[HAOI2008]移动玩具</a></p>
+<p>将4*4的矩阵看做一排，变成长度为16的二进制数，dfs即可</p>
+<h4 id="记忆化搜索"><strong>记忆化搜索</strong></h4>
+<blockquote>
+<p>假设你现在有一个有向无环图<br>
+你要求从1号节点出发的最长的路径<br>
+我们可以令f[i]表示从i出发的最长的路径<br>
+那么f[x]=max(f[y]+len)，len为x到y的边的长度<br>
+f[1]即为答案<br>
+我们可以通过dfs来求f值，而这样的话复杂度是指数级的<br>
+我们发现在搜索过程中，我们会搜索重复的状态，即，不论你从x开始搜索几次，你得到的答案都是一样的<br>
+那么我们不妨记录一下每个点是否被搜索过，以及搜索的结果是什么<br>
+如果当前要搜的点已经被搜索过了，我们就直接返回结果<br>
+这就叫做记忆化搜索</p>
+</blockquote>
+<p><s>实质为动态规划</s><br>
+所有的动态规划都能用记忆化搜索实现，但常数会很大<br>
+记忆化搜索不需要按照拓扑序，因为搜索的过程本身就遵循拓扑序</p>
+<p>计数</p>
+<blockquote>
+<p>一副不含王的扑克牌由52张牌组成，由红桃、黑桃、梅花、方块4组牌组成，每组13张不同的面值。现在给定52张牌中的若干张，请计算将它们排成一列，相邻的牌面值不同的方案数。</p>
+</blockquote>
+<p>记录13种面值的出现次数，进行记忆化搜索</p>
+<h4 id="idfs"><strong>IDFS</strong></h4>
+<p>有些情况下，我们无法直接进行dfs或bfs，因为你要搜索的图可能是无限大的，每个点所连的边也可能有无限多条，此时dfs和bfs同时失效。<br>
+IDFS：在进行dfs时对搜索深度进行限制，这样就将无限大小的图缩为有限大小的图，可以进行搜索（结合bfs和dfs）</p>
+<p><strong>小 试 牛 刀</strong></p>
+<p><a href="https://www.luogu.com.cn/problem/UVA12558">埃及分数<s>IG粉丝</s></a><br>
+枚举相加分数的个数，则第一个枚举到的状态为最佳状态。<br>
+这样就成功的将无限的深度转变为有限的深度。</p>
+<h4 id="a"><strong>A</strong>*</h4>
+<blockquote>
+<p>A*，常见于游戏中的自动寻路。</p>
+</blockquote>
+<p>设已经消耗的代价为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，估算从x到终点的代价为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">g(x)=f(x)+h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>那么用优先队列来维护<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">g(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>最小的点，进行搜索</p>
+<p><em><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>是A*的精髓，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>越接近于实际代价，A*效率越高。但是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>不能够大于实际代价，就会导致答案错误。</em></p>
+<p><strong>小 试 牛 刀</strong></p>
+<p><a href="https://www.luogu.com.cn/problem/P1379">八数码问题</a></p>
+<p><em>两种可行的h函数<br>
+1.不应该在这个位置的数字数<br>
+2.所用数字距离应在位置的曼哈顿距离</em></p>
+<p><a href="https://www.luogu.com.cn/problem/P4467">K短路问题(紫题，不会被卡)</a><br>
+<em><a href="https://www.luogu.com.cn/problem/P2483">黑题，会被卡掉一个点</a></em><br>
+用A*，遍历到终点的第K次就是K短路问题<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为x到终点的最短路</p>
+<h4 id="ida"><strong>IDA</strong>*</h4>
+<blockquote>
+<p>在进行IDFS的时候，我们也可以用A*进行搜索<br>
+如果在当前深度限制下搜到了结束状态，我们就可以直接输出答案<br>
+如果没有搜到答案，我们可以把深度限制更新为最小的f(x)</p>
+</blockquote>
+<p>解析：当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>超过要求深度时，剪枝。</p>
+<p><strong>小 试 牛 刀</strong></p>
+<p><a href="https://www.luogu.com.cn/problem/UVA1343">[poj2286]The Rotation Game</a></p>
+<p>IDA*，思路同埃及分数，枚举移动步数，设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>为8-中间8个数中出现次数最多的那个数（最少移动次数）</p>
+<p><a href="https://www.luogu.com.cn/problem/P2324">[SCOI2005]骑士精神</a></p>
 
           <div class="toc-container"><ul class="markdownIt-TOC">
 <li>
@@ -302,6 +378,11 @@ N&lt;=10</p>
 <li><a href="#%E6%90%9C%E7%B4%A2"><strong>搜索</strong></a>
 <ul>
 <li><a href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><strong>深度优先搜索</strong></a></li>
+<li><a href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><strong>广度优先搜索</strong></a></li>
+<li><a href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2"><strong>记忆化搜索</strong></a></li>
+<li><a href="#idfs"><strong>IDFS</strong></a></li>
+<li><a href="#a"><strong>A</strong>*</a></li>
+<li><a href="#ida"><strong>IDA</strong>*</a></li>
 </ul>
 </li>
 </ul>
