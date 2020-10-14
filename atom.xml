@@ -2,13 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>L1nk的博客</title>
-    <updated>2020-10-13T16:31:06.086Z</updated>
+    <updated>2020-10-14T12:12:11.314Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
     <logo>https://L1nkzz.github.io/images/avatar.png</logo>
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, L1nk的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[学习清单]]></title>
+        <id>https://L1nkzz.github.io/post/xue-xi-qing-dan/</id>
+        <link href="https://L1nkzz.github.io/post/xue-xi-qing-dan/">
+        </link>
+        <updated>2020-10-14T11:24:28.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>三分</li>
+<li>模拟退火</li>
+<li>数论</li>
+<li>线段树</li>
+<li>LCA</li>
+<li>树的重心</li>
+<li>树链剖分</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[清 北 学 堂 国 庆 七 日 游]]></title>
         <id>https://L1nkzz.github.io/post/qing-bei-xue-tang-guo-qing-qi-ri-you/</id>
