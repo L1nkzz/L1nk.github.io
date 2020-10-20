@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>L1nk的博客</title>
-    <updated>2020-10-20T15:14:17.700Z</updated>
+    <updated>2020-10-20T15:15:40.511Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
@@ -30,7 +30,7 @@
 <li>三分</li>
 <li>模拟退火</li>
 <li>数论</li>
-<li>线段树</li>
+<li><strong>线段树</strong></li>
 <li>树链剖分</li>
 <li>网络流</li>
 <li>CDQ分治</li>
