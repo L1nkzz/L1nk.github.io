@@ -2,13 +2,188 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>L1nk的博客</title>
-    <updated>2020-11-01T13:29:35.357Z</updated>
+    <updated>2020-11-01T16:13:20.587Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
     <logo>https://L1nkzz.github.io/images/avatar.png</logo>
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, L1nk的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[图论]]></title>
+        <id>https://L1nkzz.github.io/post/tu-lun/</id>
+        <link href="https://L1nkzz.github.io/post/tu-lun/">
+        </link>
+        <updated>2020-11-01T15:22:01.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="强连通">强连通</h1>
+<p>tarjan算法<br>
+记录：</p>
+<ul>
+<li>bool in，记录是否在某个强连通分量中；</li>
+<li>low，这个点所能到达的最高点（dfs序）</li>
+<li>g，记录所在强连通分量的序号</li>
+<li>dfn，dfs序</li>
+</ul>
+<p><strong>代码</strong>：</p>
+<pre><code class="language-cpp">vector&lt;int&gt; lines[10005];
+struct Node
+{
+    bool in;
+    int g;
+    int low;
+    int dfn;
+}mp[10005];
+int size[10005];
+int g;
+int p;
+int ans;
+stack&lt;int&gt; st;
+void tarjan(int pos)
+{
+    mp[pos].low = mp[pos].dfn = ++p;
+    mp[pos].in = true;
+    st.push(pos);
+    F(i, 0, lines[pos].size() - 1)
+    {
+        if(!mp[lines[pos][i]].dfn)
+        {
+            tarjan(lines[pos][i]);
+            mp[pos].low = min(mp[pos].low, mp[lines[pos][i]].low);
+        }
+        else if(mp[lines[pos][i]].in)
+        {
+            mp[pos].low = min(mp[pos].low, mp[lines[pos][i]].dfn);
+        }
+    }
+    if(mp[pos].low == mp[pos].dfn)
+    {
+        mp[pos].g = ++g;
+        mp[pos].in = false;
+        int id = 10000000;
+        do
+        {
+            id = st.top();
+            mp[id].g = g;
+            size[g]++;
+            mp[id].in = false;
+            st.pop();
+        } while (id != pos);
+    }
+}
+</code></pre>
+<p>解释：假如连接的下个点没有dfn（没走过），正常走，此点的low取两者的最小值；假如连接的下个点走过，更新low就可以了；假如一个点的low等于它本身，说明它就是这个强连通分量的最高点，此时栈中所有比pos后入栈的点都在pos所在的强连通分量中。</p>
+<h2 id="缩点">缩点</h2>
+<p>边所连接的两点不在同一强连通分量的边全部连向top，在同一强连通分量的边删除，点的权值全部加给top<br>
+<em>top指强连通分量中dfs序最小的点</em></p>
+<h2 id="割点">割点</h2>
+<ul>
+<li>当此点为根节点时，假如子树数量大于1，那么此点必为割点</li>
+<li>虽然是张无向图，但是我们是dfs遍历，因此我们每次回到根节点都相当于遍历完一颗子树，关于这颗子树上有没有环我们不关心</li>
+<li>对于非根节点，我们只需判断它的所有子节点中有无点的low（<em>可回溯到的最高点</em>）是否大于等于当前点，如果是，那么说明删去当前点的话这个子节点就无法与此节点上方的节点联通，因此此点为割点</li>
+</ul>
+<h1 id="最短路">最短路</h1>
+<p>dijkstra算法，需要用优先队列，可以处理单源最短路径，但不可以有权值为负数的边<br>
+核心代码：</p>
+<pre><code class="language-cpp">point tmp;
+p[s] = 0;
+tmp.id = s;
+tmp.d = 0;
+m.push(tmp);
+while(!m.empty())
+{
+	int ps = m.top().id;
+	int dis = m.top().d;
+	m.pop();
+    if(trig[ps])
+        continue;
+    trig[ps] = true;
+    for(int i = 0; i &lt; z[ps].size(); i++)
+	{
+		int ad = dis + z[ps][i].d;
+		if(ad &lt; p[z[ps][i].t] &amp;&amp; !trig[z[ps][i].t])
+		{
+	    	p[z[ps][i].t] = ad;
+			point tmp;
+			tmp.id = z[ps][i].t;
+			tmp.d = ad;
+			m.push(tmp);
+		}
+	}
+}
+</code></pre>
+<h1 id="生成树">生成树</h1>
+<p>kruscal算法：将边按权值从小到大排列；遍历每条边，假如这条边连接的两个点不连通（用并查集维护），那么就连上这条边，ans+=权值，一直操作到边数等于点数-1（树的边数）</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+int n, m;
+long ans;
+int p;
+vector&lt;int&gt; b[5005];
+struct line
+{
+   int x, y, len;
+}lines[200005];
+int f[200005];
+bool cmp(line x, line y)
+{
+   return x.len &lt; y.len;
+}
+int find(int x)
+{
+   if(x != f[x])
+   {
+   	f[x] = find(f[x]);
+   	return f[x];
+   }
+   else
+   return x;
+}
+int main()
+{
+   cin &gt;&gt; n &gt;&gt; m;
+   p = 0;
+   for(int i = 1; i &lt;= m; i++)
+   {
+   	int t, m, p;
+   	cin &gt;&gt; t &gt;&gt; m &gt;&gt; p;
+   	lines[i].x = min(t, m);
+   	lines[i].y = max(t, m);
+   	lines[i].len = p;
+   }
+   for(int i = 1; i &lt;= n; i++)
+   {
+   	f[i] = i;
+   }
+   sort(lines + 1, lines + 1 + m, cmp);
+   for(int i = 1; i &lt;= m; i++)
+   {
+   	if(p == n - 1)
+   	break;
+   	int x = lines[i].x, y = lines[i].y;
+   	y = find(y);
+   	x = find(x);
+   	if(f[x] != f[y])
+   	{
+   		p++;
+   		f[y] = x;
+   		find(y);
+   		ans += lines[i].len;
+   	}
+   }
+   if(p != n - 1)
+   cout &lt;&lt; &quot;orz&quot;;
+   else
+   cout &lt;&lt; ans;
+   return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[bugs]]></title>
         <id>https://L1nkzz.github.io/post/bugs/</id>
@@ -37,6 +212,46 @@ pos指线段树中当前下标，l、r为所要求的l、r，nl、nr为nowl,nowr
 <li>主函数调用函数的参数一定要一一对应，不能够上面void doit(int size, int pos)下面调用时doit(pos, size)</li>
 <li>不要图方便把mid等变量改成全局变量</li>
 <li>maketree()、add()等等没有返回值的函数，l==r或者nl &gt;= l &amp;&amp; nr &lt;= r等函数结束时，不要忘记return来避免继续递归</li>
+</ul>
+<h1 id="树链剖分">树链剖分</h1>
+<ul>
+<li>dfs1，处理f，depth，bson(biggest_son)，size</li>
+<li>如何判断连的边不是父节点？lines[pos][i] != list[pos].f</li>
+<li>dfs2，处理dfs序，将点的权值按照dfs序传入数组，方便建立线段树；处理重链的顶点</li>
+<li>dfs序一定要bson优先，这样能保证一条重链上的dfs序号连续</li>
+</ul>
+<h1 id="莫队算法">莫队算法</h1>
+<ul>
+<li>离线！</li>
+<li>询问排序：优先按左端点的块的编号排序，其次按右端点排序</li>
+<li><strong>核心</strong></li>
+<li>指针st， ed，对于排序后的每个询问进行指针的左右移动，同时对ans进行修改</li>
+</ul>
+<h1 id="矩阵相乘">矩阵相乘</h1>
+<p>矩阵a(n, m), b(m, k)，相乘得到c(m, m);<br>
+c(x, y)为a第x行每个值与b第y行每个值的乘积之和</p>
+<h1 id="强连通">强连通</h1>
+<ul>
+<li>while从栈中取数时，判断条件为<em>while (id != pos)</em>，不能写list[st.top()].dfn != xxxxxxx.low，因为同一强连通分量里可能会有不止一个点满足这一条件</li>
+</ul>
+<h1 id="最短路">最短路</h1>
+<ul>
+<li><strong>优！先！队！列！的！比！较！函！数！是！反！过！来！的！写！大！于！号！就！成！了！小！根！堆！</strong></li>
+<li>记得开visit数组记录此节点走没走过，否则时间会爆炸的</li>
+<li>要把mindis数组初始化为INT_MAX</li>
+<li>优先队列取完队首要立刻出栈！！！</li>
+<li>在加入优先队列时，一定要优先更新mindis数组，否则q.top()可能会改变，也不要一定以为新加入的点一定是最小值；<br>
+错误如下：<pre><code class="language-cpp">points tmp;
+tmp.pos = id;
+tmp.d = dis;
+q.push(tmp);
+d[id] = q.top().d;
+</code></pre>
+</li>
+</ul>
+<h1 id="生成树">生成树</h1>
+<ul>
+<li>保证每条边的x、y有序，x小于y，这样方便维护并查集</li>
 </ul>
 ]]></content>
     </entry>
