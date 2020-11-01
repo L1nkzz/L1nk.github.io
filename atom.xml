@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>L1nk的博客</title>
-    <updated>2020-11-01T16:13:20.587Z</updated>
+    <updated>2020-11-01T16:15:02.431Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
@@ -256,17 +256,6 @@ d[id] = q.top().d;
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[数 学]]></title>
-        <id>https://L1nkzz.github.io/post/shu-xue/</id>
-        <link href="https://L1nkzz.github.io/post/shu-xue/">
-        </link>
-        <updated>2020-10-20T15:10:01.000Z</updated>
-        <content type="html"><![CDATA[<p>正在被数学血虐。。。等抽空把相关内容更上来吧<br>
-<s>数学一本通，折磨滴神</s><br>
-<s>指中考后</s></p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[学习清单]]></title>
         <id>https://L1nkzz.github.io/post/xue-xi-qing-dan/</id>
         <link href="https://L1nkzz.github.io/post/xue-xi-qing-dan/">
@@ -276,10 +265,10 @@ d[id] = q.top().d;
 <li>三分</li>
 <li>模拟退火</li>
 <li>数论</li>
-<li><strong>线段树</strong></li>
-<li>树链剖分</li>
+<li>线段树（已完成）</li>
+<li>树链剖分（已完成）</li>
 <li>网络流</li>
-<li>CDQ分治</li>
+<li>CDQ分治     <s>模板过了就当做完成了吧</s></li>
 </ul>
 ]]></content>
     </entry>
