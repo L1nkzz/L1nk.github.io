@@ -2,13 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://L1nkzz.github.io</id>
     <title>L1nk的博客</title>
-    <updated>2020-10-20T15:15:40.511Z</updated>
+    <updated>2020-11-01T13:29:35.357Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://L1nkzz.github.io"/>
     <link rel="self" href="https://L1nkzz.github.io/atom.xml"/>
     <logo>https://L1nkzz.github.io/images/avatar.png</logo>
     <icon>https://L1nkzz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, L1nk的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[bugs]]></title>
+        <id>https://L1nkzz.github.io/post/bugs/</id>
+        <link href="https://L1nkzz.github.io/post/bugs/">
+        </link>
+        <updated>2020-11-01T13:05:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="重点">重点</h1>
+<ul>
+<li><em><strong>freopen！</strong></em></li>
+<li><em><strong>long long! 用快读的话，不要忘记把快读的返回值改成longlong， 里面的整数n也要改成longlong， printf(&quot;%lld&quot;)</strong></em></li>
+<li><em><strong>int main()!</strong></em> <s>因为忘记开ll直接ctrl+F把全部int替换成ll</s></li>
+<li><em><strong>cin,cout不能和printf,scanf,快读等混用</strong></em></li>
+<li><em><strong>别忘加头文件！</strong></em></li>
+<li><em><strong>if里是用==不是=</strong></em> <s>迟诚行为</s></li>
+</ul>
+<h1 id="线段树">线段树</h1>
+<p>习惯：add(int pos, int l, int r, int nl, int nr, int k)<br>
+find(int pos, int l, int r, int nl, int nr)<br>
+pos指线段树中当前下标，l、r为所要求的l、r，nl、nr为nowl,nowr，即为现在所在的区间端点</p>
+<ul>
+<li>数组开四倍大小</li>
+<li>add、find中mid = nl + nr &gt;&gt; 1;</li>
+<li>向下遍历时：if(l &lt;= mid) 和 if(r &gt; mid)</li>
+<li>一定要记住在函数中间写down，结尾写up！</li>
+<li>down里num[pos &lt;&lt; 1] + ltag[pos] * (mid - l + 1)！千万不能直接写size = r - l + 1 &gt;&gt; 1;</li>
+<li>主函数调用函数的参数一定要一一对应，不能够上面void doit(int size, int pos)下面调用时doit(pos, size)</li>
+<li>不要图方便把mid等变量改成全局变量</li>
+<li>maketree()、add()等等没有返回值的函数，l==r或者nl &gt;= l &amp;&amp; nr &lt;= r等函数结束时，不要忘记return来避免继续递归</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数 学]]></title>
         <id>https://L1nkzz.github.io/post/shu-xue/</id>
