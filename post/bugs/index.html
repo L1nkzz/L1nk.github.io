@@ -78,7 +78,7 @@
         
         <li class="nav-item">
           <div class="gridea-search-container">
-            <form id="gridea-search-form" style="position: relative" data-update="1604722367628"
+            <form id="gridea-search-form" style="position: relative" data-update="1605022601188"
               action="/search/index.html">
               <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
               <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -128,7 +128,7 @@
         
         <li class="nav-item">
           <div class="gridea-search-container">
-            <form id="gridea-search-form" style="position: relative" data-update="1604722367628"
+            <form id="gridea-search-form" style="position: relative" data-update="1605022601188"
               action="/search/index.html">
               <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
               <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
@@ -155,7 +155,7 @@
               <h1>bugs</h1>
               <span class="meta">
                 Posted on
-                2020-11-01，3 min read
+                2020-11-01，4 min read
               </span>
             </div>
           
@@ -233,6 +233,12 @@ d[id] = q.top().d;
 <ul>
 <li>保证每条边的x、y有序，x小于y，这样方便维护并查集</li>
 </ul>
+<h1 id="网络流">网络流</h1>
+<ul>
+<li>权值在边上不在点上不要犯搞混点编号和边编号的nt错误。。。。</li>
+<li>dfs里要注意num &lt;= 0 的时候就要退出循环，没有贡献了</li>
+<li>pos初始必须是奇数，即保证一对正反边奇数序号较大偶数序号较小这样可以直接异或计算</li>
+</ul>
 
           <div class="toc-container"><ul class="markdownIt-TOC">
 <li><a href="#%E9%87%8D%E7%82%B9">重点</a></li>
@@ -243,6 +249,7 @@ d[id] = q.top().d;
 <li><a href="#%E5%BC%BA%E8%BF%9E%E9%80%9A">强连通</a></li>
 <li><a href="#%E6%9C%80%E7%9F%AD%E8%B7%AF">最短路</a></li>
 <li><a href="#%E7%94%9F%E6%88%90%E6%A0%91">生成树</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E6%B5%81">网络流</a></li>
 </ul>
 </div>
           
